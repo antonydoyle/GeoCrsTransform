@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3hgP+rWv+dk=",
+  "dgSpecHash": "zF2FqeNzfsc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\anton\\Documents\\Github\\GeoLoc\\samples\\GeoCrsTransform.Sample\\GeoCrsTransform.Sample.csproj",
+  "projectFilePath": "C:\\Users\\anton\\Documents\\Github\\GeoCrsTransform\\samples\\GeoCrsTransform.Sample\\GeoCrsTransform.Sample.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

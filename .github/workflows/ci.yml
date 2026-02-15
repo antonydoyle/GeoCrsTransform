@@ -15,15 +15,34 @@ jobs:
   build-and-test:
     strategy:
       matrix:
-        os: [ windows-latest, ubuntu-latest, macos-latest ]
+        include:
+          - os: ubuntu-latest
+            dotnet: '8.0.x'
+          - os: ubuntu-latest
+            dotnet: '9.0.x'
+          - os: ubuntu-latest
+            dotnet: '10.0.x'
+          - os: windows-latest
+            dotnet: '10.0.x'
+          - os: macos-latest
+            dotnet: '10.0.x'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Temporarily remove global.json for newer SDKs
+        if: matrix.dotnet != '8.0.x'
+        shell: bash
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup
+            echo "global.json moved to global.json.cibackup"
+          fi
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: ${{ matrix.dotnet }}
 
       - name: Restore
         run: dotnet restore
@@ -39,11 +58,18 @@ jobs:
     needs: build-and-test
     steps:
       - uses: actions/checkout@v4
+      - name: Temporarily remove global.json for pack
+        shell: bash
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup || true
+            echo "global.json moved to global.json.cibackup"
+          fi
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Pack
         run: dotnet pack src/GeoCrsTransform/GeoCrsTransform.csproj -c Release -o out
@@ -64,10 +90,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Temporarily remove global.json for publish
+        shell: bash
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup || true
+            echo "global.json moved to global.json.cibackup"
+          fi
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Determine semantic version
         id: semver

@@ -1,0 +1,60 @@
+## Ignore build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+## Visual Studio and Rider
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.idea/
+*.sln.iml
+
+## VS Code
+.vscode/
+
+## NuGet
+*.nupkg
+packages/
+.nuget/
+artifacts/
+
+## Dotnet
+project.lock.json
+project.fragment.lock.json
+
+## Test results
+TestResults/
+*.trx
+
+## Logs
+*.log
+
+## Temp files
+*.tmp
+*.temp
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Samples/build outputs
+out/
+samples/**/bin/
+samples/**/obj/
+
+## Source/test build outputs
+src/**/bin/
+src/**/obj/
+tests/**/bin/
+tests/**/obj/
+
+## IDE / tool settings
+*.DotSettings.user
+_ReSharper*/
+
+## Local secrets (if present)
+secrets.json
