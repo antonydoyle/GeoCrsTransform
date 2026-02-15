@@ -25,7 +25,7 @@
 ## 2. Not guaranteed in v1
 
 - **Survey-grade transforms** where **grid shifts** (NTv2, NADCON, etc.) are required. The library uses Helmert-only datum shifts; accuracy may be reduced where grids would normally apply.
-- **Coverage for “all EPSG”** — only a curated subset of major CRSs is included.
+- **Coverage for “all EPSG”** - only a curated subset of major CRSs is included.
 - **Automatic “best operation by area of use”** selection; a single default transform per CRS pair is used. Area-based selection may be added in a future version.
 
 ---
