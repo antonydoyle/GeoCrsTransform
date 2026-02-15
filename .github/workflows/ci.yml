@@ -32,6 +32,7 @@ jobs:
 
       - name: Temporarily remove global.json for newer SDKs
         if: matrix.dotnet != '8.0.x'
+        shell: bash
         run: |
           if [ -f global.json ]; then
             mv global.json global.json.cibackup
@@ -58,6 +59,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Temporarily remove global.json for pack
+        shell: bash
         run: |
           if [ -f global.json ]; then
             mv global.json global.json.cibackup || true
@@ -89,6 +91,7 @@ jobs:
           fetch-depth: 0
 
       - name: Temporarily remove global.json for publish
+        shell: bash
         run: |
           if [ -f global.json ]; then
             mv global.json global.json.cibackup || true
