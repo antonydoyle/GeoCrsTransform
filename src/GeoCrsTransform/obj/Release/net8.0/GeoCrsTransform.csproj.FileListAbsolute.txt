@@ -11,3 +11,17 @@ C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\obj\Release\net8.0\re
 C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.xml
 C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.pdb
 C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\obj\Release\net8.0\ref\GeoCrsTransform.dll
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.deps.json
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.dll
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.pdb
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.xml
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.AssemblyInfoInputs.cache
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.AssemblyInfo.cs
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.csproj.CoreCompileInputs.cache
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.sourcelink.json
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.dll
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\refint\GeoCrsTransform.dll
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.xml
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\GeoCrsTransform.pdb
+C:\Users\anton\Documents\Github\GeoCrsTransform\src\GeoCrsTransform\obj\Release\net8.0\ref\GeoCrsTransform.dll

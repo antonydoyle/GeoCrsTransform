@@ -30,6 +30,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Temporarily remove global.json for newer SDKs
+        if: matrix.dotnet != '8.0.x'
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup
+            echo "global.json moved to global.json.cibackup"
+          fi
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -49,6 +57,12 @@ jobs:
     needs: build-and-test
     steps:
       - uses: actions/checkout@v4
+      - name: Temporarily remove global.json for pack
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup || true
+            echo "global.json moved to global.json.cibackup"
+          fi
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -73,6 +87,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Temporarily remove global.json for publish
+        run: |
+          if [ -f global.json ]; then
+            mv global.json global.json.cibackup || true
+            echo "global.json moved to global.json.cibackup"
+          fi
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4

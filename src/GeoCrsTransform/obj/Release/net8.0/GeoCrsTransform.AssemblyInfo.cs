@@ -12,10 +12,10 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("GeoCrsTransform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("Dependency-free .NET library for coordinate transforms between major geographic a" +
-    "nd projected CRSs (WGS84 hub, Helmert, pure-managed projections).")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute(("Dependency-free .NET library for coordinate transforms between major geographic a" +
+    "nd projected CRSs (WGS84 hub, Helmert, pure-managed projections)."))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cbb1270c3db96130408225018c837b25fbdf1180")]
 [assembly: System.Reflection.AssemblyProductAttribute("GeoCrsTransform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GeoCrsTransform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
