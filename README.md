@@ -7,6 +7,9 @@ A **dependency-free** .NET library for converting coordinates between major **Co
 
 The library uses **WGS84** as a hub datum, **Helmert 7-parameter** transforms for datum shifts, and pure-managed **projection** code (no native/PROJ dependency).
 
+
+GitHub - https://github.com/antonydoyle/GeoCrsTransform
+
 ## Supported in v1
 
 - Geographic ↔ Geographic (datum shift via Helmert)
@@ -14,7 +17,7 @@ The library uses **WGS84** as a hub datum, **Helmert 7-parameter** transforms fo
 - Projected ↔ Projected (via geographic hub)
 - **CRSs**: WGS84 (4326), ETRS89 (4258), OSGB36 (4277), Web Mercator (3857), British National Grid (27700), UTM zones 30N/31N/33N (32630, 32631, 32633), plus aliases (e.g. `WGS84`, `BNG`, `UTM30N`)
 
-See [docs/scope.md](docs/scope.md) for full scope and limitations.
+See [docs/scope.md](https://github.com/antonydoyle/GeoCrsTransform/blob/main/docs/scope.md) for full scope and limitations.
 
 ## Installation
 
@@ -70,7 +73,7 @@ var backGeo = (GeoCoordinate)result.Output;
 
 - **AccuracyClass** on each result: `High`, `Medium`, `Low`, or `Unknown`.
 - **Warnings** list when parameters are approximate or when grid-based shifts (e.g. OSTN for BNG) are not applied.
-- Survey-grade transforms that require **grid shifts** (NTv2, etc.) are **not** guaranteed in v1; Helmert-only datum shifts are used. See [docs/scope.md](docs/scope.md).
+- Survey-grade transforms that require **grid shifts** (NTv2, etc.) are **not** guaranteed in v1; Helmert-only datum shifts are used. See [docs/scope.md](https://github.com/antonydoyle/GeoCrsTransform/blob/main/docs/scope.md).
 
 ## Extending CRS data
 
@@ -80,7 +83,7 @@ CRS definitions are in the embedded `Data/major_crs.json`. The format includes:
 - `geographic`: `id`, `name`, `aliases`, `ellipsoid`, `toWgs84` (Helmert: `tx`, `ty`, `tz`, `rx`, `ry`, `rz`, `scalePpm`), `accuracy`, `warnings`
 - `projected`: `id`, `name`, `aliases`, `base` (geographic CRS id), `projection` (`WebMercator` or `TransverseMercator`), plus `centralMeridian`, `latitudeOfOrigin`, `scaleFactor`, `falseEasting`, `falseNorthing`
 
-Parameter sources and notes are recorded in [docs/parameter_sources.md](docs/parameter_sources.md).
+Parameter sources and notes are recorded in [docs/parameter_sources.md](https://github.com/antonydoyle/GeoCrsTransform/blob/main/docs/parameter_sources.md).
 
 ## Extensibility
 
@@ -89,4 +92,4 @@ Parameter sources and notes are recorded in [docs/parameter_sources.md](docs/par
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](https://github.com/antonydoyle/GeoCrsTransform/blob/main/LICENSE).
