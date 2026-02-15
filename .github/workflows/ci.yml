@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    strategy:
+      matrix:
+        os: [ windows-latest, ubuntu-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release --verbosity normal
+
+  pack-smoke:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Pack
+        run: dotnet pack src/GeoCrsTransform/GeoCrsTransform.csproj -c Release -o out
+
+      - name: Smoke install
+        run: |
+          mkdir -p smoke && cd smoke
+          dotnet new console -n Smoke -o . --force
+          dotnet add package GeoCrsTransform --source ../out
+          dotnet build
+
+  publish-nuget:
+    runs-on: ubuntu-latest
+    needs: pack-smoke
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Determine semantic version
+        id: semver
+        run: |
+          set -e
+          git fetch --tags
+          describe=$(git describe --tags --match "v[0-9]*" --abbrev=7 2>/dev/null || true)
+          if [ -z "$describe" ]; then
+            version="0.1.0"
+          else
+            # describe examples: v1.2.3 or v1.2.3-4-gabc1234
+            base=${describe%%-*}
+            base=${base#v}
+            if [[ "$describe" == "$base" ]] || [[ "$describe" == "v$base" ]]; then
+              version="$base"
+            else
+              # split into parts
+              parts=(${describe//-/ })
+              commits=${parts[1]}
+              sha=${parts[2]}
+              sha=${sha#g}
+              version="$base-$commits.sha$sha"
+            fi
+          fi
+          echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
+
+      - name: Pack with computed version
+        run: |
+          dotnet pack src/GeoCrsTransform/GeoCrsTransform.csproj -c Release -o out /p:PackageVersion=${{ env.PACKAGE_VERSION }}
+
+      - name: Publish to NuGet
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "${NUGET_API_KEY}" ]; then
+            echo "Missing NUGET_API_KEY secret; skipping publish"
+            exit 1
+          fi
+          dotnet nuget push out/*.nupkg --api-key ${NUGET_API_KEY} --source https://api.nuget.org/v3/index.json --skip-duplicate

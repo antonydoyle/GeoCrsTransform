@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>GeoCrsTransform</RootNamespace>
+    <PackageId>GeoCrsTransform</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>GeoCrsTransform</Authors>
+    <Description>Dependency-free .NET library for coordinate transforms between major geographic and projected CRSs (WGS84 hub, Helmert, pure-managed projections).</Description>
+    <PackageTags>crs;coordinates;wgs84;utm;projection;geodesy;epsg</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\major_crs.json" />
+  </ItemGroup>
+
+</Project>

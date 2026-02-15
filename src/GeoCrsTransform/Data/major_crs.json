@@ -1,0 +1,110 @@
+{
+  "ellipsoids": {
+    "WGS84": { "a": 6378137.0, "invF": 298.257223563 },
+    "Airy1830": { "a": 6377563.396, "invF": 299.3249646 }
+  },
+  "geographic": [
+    {
+      "id": "EPSG:4326",
+      "name": "WGS 84",
+      "aliases": ["WGS84", "WGS 84"],
+      "ellipsoid": "WGS84",
+      "toWgs84": null,
+      "fromWgs84": null,
+      "accuracy": "High",
+      "warnings": []
+    },
+    {
+      "id": "EPSG:4258",
+      "name": "ETRS89",
+      "aliases": ["ETRS89"],
+      "ellipsoid": "WGS84",
+      "toWgs84": null,
+      "fromWgs84": null,
+      "accuracy": "High",
+      "warnings": []
+    },
+    {
+      "id": "EPSG:4277",
+      "name": "OSGB 1936",
+      "aliases": ["OSGB36", "British National Grid base"],
+      "ellipsoid": "Airy1830",
+      "toWgs84": { "tx": 446.448, "ty": -125.157, "tz": 542.06, "rx": 0.15, "ry": 0.247, "rz": 0.842, "scalePpm": 20.4894 },
+      "fromWgs84": null,
+      "accuracy": "Medium",
+      "warnings": ["Grid shift (OSTN) not applied; use for indication only"]
+    }
+  ],
+  "projected": [
+    {
+      "id": "EPSG:3857",
+      "name": "WGS 84 / Pseudo-Mercator",
+      "aliases": ["Web Mercator", "EPSG:3857"],
+      "base": "EPSG:4326",
+      "projection": "WebMercator",
+      "accuracy": "High",
+      "warnings": [],
+      "centralMeridian": 0,
+      "latitudeOfOrigin": 0,
+      "scaleFactor": 1,
+      "falseEasting": 0,
+      "falseNorthing": 0
+    },
+    {
+      "id": "EPSG:27700",
+      "name": "British National Grid",
+      "aliases": ["BNG", "British National Grid"],
+      "base": "EPSG:4277",
+      "projection": "TransverseMercator",
+      "accuracy": "Medium",
+      "warnings": ["Grid shift (OSTN) not applied; use for indication only"],
+      "centralMeridian": -2,
+      "latitudeOfOrigin": 49,
+      "scaleFactor": 0.9996012717,
+      "falseEasting": 400000,
+      "falseNorthing": -100000
+    },
+    {
+      "id": "EPSG:32630",
+      "name": "WGS 84 / UTM zone 30N",
+      "aliases": ["UTM30N", "UTM 30N"],
+      "base": "EPSG:4326",
+      "projection": "TransverseMercator",
+      "accuracy": "High",
+      "warnings": [],
+      "centralMeridian": -3,
+      "latitudeOfOrigin": 0,
+      "scaleFactor": 0.9996,
+      "falseEasting": 500000,
+      "falseNorthing": 0
+    },
+    {
+      "id": "EPSG:32631",
+      "name": "WGS 84 / UTM zone 31N",
+      "aliases": ["UTM31N"],
+      "base": "EPSG:4326",
+      "projection": "TransverseMercator",
+      "accuracy": "High",
+      "warnings": [],
+      "centralMeridian": 3,
+      "latitudeOfOrigin": 0,
+      "scaleFactor": 0.9996,
+      "falseEasting": 500000,
+      "falseNorthing": 0
+    },
+    {
+      "id": "EPSG:32633",
+      "name": "WGS 84 / UTM zone 33N",
+      "aliases": ["UTM33N"],
+      "base": "EPSG:4326",
+      "projection": "TransverseMercator",
+      "accuracy": "High",
+      "warnings": [],
+      "centralMeridian": 15,
+      "latitudeOfOrigin": 0,
+      "scaleFactor": 0.9996,
+      "falseEasting": 500000,
+      "falseNorthing": 0
+    }
+  ]
+}

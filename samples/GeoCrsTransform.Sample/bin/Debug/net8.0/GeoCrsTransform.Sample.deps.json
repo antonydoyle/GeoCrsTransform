@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "GeoCrsTransform.Sample/1.0.0": {
+        "dependencies": {
+          "GeoCrsTransform": "1.0.0"
+        },
+        "runtime": {
+          "GeoCrsTransform.Sample.dll": {}
+        }
+      },
+      "GeoCrsTransform/1.0.0": {
+        "runtime": {
+          "GeoCrsTransform.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GeoCrsTransform.Sample/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GeoCrsTransform/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

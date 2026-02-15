@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GeoCrsTransform</name>
+    </assembly>
+    <members>
+        <member name="T:GeoCrsTransform.CoordinateTransform">
+            <summary>Factory for creating coordinate transformers.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.CoordinateTransform.CreateManaged">
+            <summary>Create the dependency-free managed transformer (this library). Use this for standalone transforms without external native dependencies.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.CoordinateTransform.CreateManaged(GeoCrsTransform.ICrsCatalog)">
+            <summary>Create a transformer with a custom catalog (e.g. for testing or extended CRS set).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.CoordinateTransformer">
+            <summary>Transforms coordinates between CRSs using the catalog and WGS84 hub.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.CrsCatalog">
+            <summary>CRS catalog loaded from embedded major_crs.json.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.CrsDefinition">
+            <summary>Definition of a coordinate reference system.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.CrsKind">
+            <summary>Kind of CRS: geographic (lat/lon) or projected (eastings/northings).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.CrsId">
+            <summary>Identifier for a coordinate reference system (authority + code, e.g. EPSG:4326).</summary>
+        </member>
+        <member name="M:GeoCrsTransform.CrsId.TryParse(System.String,GeoCrsTransform.CrsId@)">
+            <summary>Parse a string like "EPSG:4326" into a CrsId.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.DatumTransform">
+            <summary>Helmert 7-parameter datum transform. Translations in meters, rotations in arc-seconds, scale in ppm. Apply in ECEF.</summary>
+        </member>
+        <member name="P:GeoCrsTransform.DatumTransform.Identity">
+            <summary>Identity transform (no change).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.Ellipsoid">
+            <summary>Reference ellipsoid (semi-major axis and inverse flattening).</summary>
+        </member>
+        <member name="P:GeoCrsTransform.Ellipsoid.SemiMajorAxisMeters">
+            <summary>Semi-major axis in meters.</summary>
+        </member>
+        <member name="P:GeoCrsTransform.Ellipsoid.InverseFlattening">
+            <summary>Inverse flattening (1/f).</summary>
+        </member>
+        <member name="P:GeoCrsTransform.Ellipsoid.SemiMinorAxisMeters">
+            <summary>Semi-minor axis (derived).</summary>
+        </member>
+        <member name="P:GeoCrsTransform.Ellipsoid.EccentricitySq">
+            <summary>First eccentricity squared (derived).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.GeoCoordinate">
+            <summary>Geographic coordinate (latitude, longitude, optional height).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.GeodeticEcef">
+            <summary>Geodetic (lat/lon/h) to ECEF and back using the given ellipsoid.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.GeodeticEcef.ToEcef(GeoCrsTransform.GeoCoordinate,GeoCrsTransform.Ellipsoid)">
+            <summary>Convert geographic coordinate to ECEF (meters).</summary>
+        </member>
+        <member name="M:GeoCrsTransform.GeodeticEcef.FromEcef(GeoCrsTransform.Vector3d,GeoCrsTransform.Ellipsoid)">
+            <summary>Convert ECEF (meters) to geographic. Handles poles and dateline.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.Helmert">
+            <summary>Apply Helmert 7-parameter transform in ECEF. Rotations stored in arc-seconds, converted to radians.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.Helmert.ApplyToWgs84(GeoCrsTransform.Vector3d,GeoCrsTransform.DatumTransform)">
+            <summary>Apply transform ToWgs84: source_datum -> WGS84 (ECEF). X_wgs = s*R*X_src + T.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.Helmert.ApplyFromWgs84(GeoCrsTransform.Vector3d,GeoCrsTransform.DatumTransform)">
+            <summary>Apply transform FromWgs84: WGS84 -> source_datum (ECEF). X_src = R'*(X_wgs - T)/s.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.Helmert.Apply(GeoCrsTransform.Vector3d,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>Standard 7-parameter: X_wgs84 = (1+s) * R * X_src + T. R in arc-seconds (small angles).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ICoordinateTransformer">
+            <summary>Transforms coordinates between CRSs.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.ICoordinateTransformer.Transform(GeoCrsTransform.GeoCoordinate,GeoCrsTransform.CrsId,GeoCrsTransform.CrsId,GeoCrsTransform.TransformOptions)">
+            <summary>Transform a geographic coordinate from source CRS to destination CRS. Result is GeoCoordinate or ProjectedCoordinate when dest is projected.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.ICoordinateTransformer.Transform(GeoCrsTransform.ProjectedCoordinate,GeoCrsTransform.CrsId,GeoCrsTransform.CrsId,GeoCrsTransform.TransformOptions)">
+            <summary>Transform a projected coordinate from source CRS to destination CRS. Result is geographic or projected depending on destCrs.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ICrsCatalog">
+            <summary>Catalog of coordinate reference system definitions.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.ICrsCatalog.TryGet(GeoCrsTransform.CrsId,GeoCrsTransform.CrsDefinition@)">
+            <summary>Try to get a CRS definition by id.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.ICrsCatalog.TryGetByAlias(System.String,GeoCrsTransform.CrsId@)">
+            <summary>Try to resolve an alias (e.g. "WGS84", "UTM30N") to a CrsId.</summary>
+        </member>
+        <member name="M:GeoCrsTransform.ICrsCatalog.ListMajor">
+            <summary>List major CRS identifiers in the catalog.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ProjectedCoordinate">
+            <summary>Projected coordinate (easting, northing in meters, optional height).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ProjectionDefinition">
+            <summary>Definition of a map projection (parameters and base geographic CRS).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ProjectionKind">
+            <summary>Supported projection types.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.ProjectionEngine">
+            <summary>Forward and inverse map projections.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.StubCrsCatalog">
+            <summary>Minimal in-memory catalog for testing; replaced by real catalog in Phase 3.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.TransformOptions">
+            <summary>Options for coordinate transformation.</summary>
+        </member>
+        <member name="P:GeoCrsTransform.TransformOptions.Strict">
+            <summary>If true, throw when CRS is unknown; if false, return error in result.</summary>
+        </member>
+        <member name="P:GeoCrsTransform.TransformOptions.AxisOrderPreference">
+            <summary>Axis order preference (library uses its default if not specified).</summary>
+        </member>
+        <member name="P:GeoCrsTransform.TransformOptions.AccuracyPreference">
+            <summary>Trade-off between speed and accuracy when multiple paths exist.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.AxisOrderPreference">
+            <summary>Preferred axis order for geographic coordinates.</summary>
+        </member>
+        <member name="F:GeoCrsTransform.AxisOrderPreference.LibraryDefault">
+            <summary>Use library default (typically lat, lon).</summary>
+        </member>
+        <member name="T:GeoCrsTransform.AccuracyPreference">
+            <summary>Preference when multiple transformation options exist.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.TransformResult`1">
+            <summary>Result of a coordinate transformation with metadata and warnings.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.AccuracyClass">
+            <summary>Indicates expected accuracy of the transform.</summary>
+        </member>
+        <member name="T:GeoCrsTransform.Vector3d">
+            <summary>3D vector (e.g. ECEF in meters).</summary>
+        </member>
+    </members>
+</doc>

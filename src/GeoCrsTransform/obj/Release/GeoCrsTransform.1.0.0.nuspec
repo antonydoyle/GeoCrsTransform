@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GeoCrsTransform</id>
+    <version>1.0.0</version>
+    <authors>GeoCrsTransform</authors>
+    <description>Dependency-free .NET library for coordinate transforms between major geographic and projected CRSs (WGS84 hub, Helmert, pure-managed projections).</description>
+    <tags>crs coordinates wgs84 utm projection geodesy epsg</tags>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.dll" target="lib\net8.0\GeoCrsTransform.dll" />
+    <file src="C:\Users\anton\Documents\Github\GeoLoc\src\GeoCrsTransform\bin\Release\net8.0\GeoCrsTransform.xml" target="lib\net8.0\GeoCrsTransform.xml" />
+  </files>
+</package>

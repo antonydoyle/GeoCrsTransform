@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "GeoCrsTransform/1.0.0": {
+        "runtime": {
+          "GeoCrsTransform.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GeoCrsTransform/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
